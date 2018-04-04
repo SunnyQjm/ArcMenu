@@ -23,7 +23,18 @@ class ArcMenu private constructor(context: Context, val animator: ArcAnimator, p
 
     private constructor(builder: Builder) : this(builder.context, builder.animator, builder.position,
             builder.size, builder.contentMargin, builder.layoutMarginHorizon, builder.layoutMarginVertical,
-            builder.bgRes, builder.contentRes, builder.duration)
+            builder.bgRes, builder.contentRes, builder.duration) {
+        this.setOnClickListener {
+            toogle(object : OnArcMenuChangeListener {
+                override fun open() {
+                }
+
+                override fun close() {
+                }
+
+            })
+        }
+    }
 
     companion object {
         fun build(context: Context) = Builder(context)
