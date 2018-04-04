@@ -22,16 +22,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFab() {
         fab = ArcMenu.Builder(this)
+                //设置菜单按钮的大小
                 .size(getDimenPixelSize(R.dimen.fab_menu_size))
+                //设置菜单按钮的图标
                 .contentRes(R.mipmap.ic_launcher)
+                //设置菜单的内边距
                 .contentMargin(getDimenPixelSize(R.dimen.fab_menu_content_margin))
+                //设置菜单放置的位置
                 .position(FloatingButton.Position.POSITION_BOTTOM_RIGHT)
+                //设置展开动画的时长
                 .duration(300)
                 .build()
 
-        fab.setOnClickListener {
-            fab.open()
-        }
         fab.startAngle = -90
         fab.endAngle = 0
         fab.radius = DensityUtil.dip2px(this, 100f)
