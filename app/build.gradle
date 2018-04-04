@@ -27,7 +27,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation project(':arcmenu2')
+//    implementation project(':arcmenu2')
+    implementation 'com.github.SunnyQjm:ArcMenu:v1.0.0'
 }
 repositories {
     mavenCentral()
