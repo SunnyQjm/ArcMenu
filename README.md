@@ -39,7 +39,7 @@
         ```
     - Java
         ```java
-        ArcMenu fab = ArcMenu.Builder(this)
+        ArcMenu fab = new ArcMenu.Builder(this)
                     //设置菜单按钮的大小
                     .size(getDimenPixelSize(R.dimen.fab_menu_size))
                     //设置菜单按钮的图标
