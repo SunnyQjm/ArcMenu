@@ -3,6 +3,7 @@ package com.j.ming.arcmenu2
 import android.animation.Animator
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import com.j.ming.arcmenu2.extension.*
@@ -25,7 +26,7 @@ class ArcMenu private constructor(context: Context, val animator: ArcAnimator, p
             builder.bgRes, builder.contentRes, builder.duration)
 
     companion object {
-        fun build(context: Context, init: Builder.() -> Unit) = Builder(context, init)
+        fun build(context: Context) = Builder(context)
                 .build()
     }
 
@@ -220,13 +221,7 @@ class ArcMenu private constructor(context: Context, val animator: ArcAnimator, p
     /**
      * ArcMenu 构造器
      */
-    class Builder private constructor() {
-        constructor(context: Context, init: Builder.() -> Unit) : this() {
-            this.context = context
-            init()
-        }
-
-        lateinit var context: Context
+    class Builder constructor(val context: Context) {
         var position: Position = DEFAULT_POSITION
         var size: Int = DEFAULT_SIZE
         var contentMargin: Int = DEFAULT_CONTENT_MARGIN
@@ -267,15 +262,52 @@ class ArcMenu private constructor(context: Context, val animator: ArcAnimator, p
 
         }
 
-        fun position(init: Builder.() -> Position) = apply { this.position = init() }
-        fun size(init: Builder.() -> Int) = apply { this.size = init() }
-        fun contentMargin(init: Builder.() -> Int) = apply { this.contentMargin = init() }
-        fun layoutMarginHorizon(init: Builder.() -> Int) = apply { this.layoutMarginHorizon = init() }
-        fun layoutMarginVertical(init: Builder.() -> Int) = apply { this.layoutMarginVertical = init() }
-        fun bgRes(init: Builder.() -> Int) = apply { this.bgRes = init() }
-        fun contentRes(init: Builder.() -> Int) = apply { this.contentRes = init() }
-        fun animator(init: Builder.() -> ArcAnimator) = apply { this.animator = init() }
-        fun duration(init: Builder.() -> Long) = apply { this.duration = init() }
+
+        fun position(position: Position): ArcMenu.Builder {
+            this.position = position
+            return this
+        }
+
+        fun size(size: Int): ArcMenu.Builder {
+            this.size = size
+            return this
+        }
+
+        fun contentMargin(contentMargin: Int): ArcMenu.Builder {
+            this.contentMargin = contentMargin
+            return this
+        }
+
+        fun layoutMarginHorizon(layoutMarginHorizon: Int): ArcMenu.Builder {
+            this.layoutMarginHorizon = layoutMarginHorizon
+            return this
+        }
+
+        fun layoutMarginVertical(layoutMarginVertical: Int): ArcMenu.Builder {
+            this.layoutMarginVertical = layoutMarginVertical
+            return this
+        }
+
+        fun bgRes(bgRes: Int): ArcMenu.Builder {
+            this.bgRes = bgRes
+            return this
+        }
+
+        fun contentRes(contentRes: Int): ArcMenu.Builder {
+            this.contentRes = contentRes
+            return this
+        }
+
+        fun animator(animator: ArcAnimator): ArcMenu.Builder {
+            this.animator = animator
+            return this
+        }
+
+        fun duration(duration: Long): ArcMenu.Builder {
+            this.duration = duration
+            return this
+        }
+
         fun build() = ArcMenu(this)
     }
 }

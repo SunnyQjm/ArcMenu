@@ -1,3 +1,6 @@
+
+> # 集成步骤
+
 ## 第一步： 
   * Add it in your root build.gradle at the end of repositories:
 	```gradle
@@ -7,6 +10,7 @@
             }
         }
     ```
+    
 ## 第二步
   * Add the dependency
     ```
@@ -14,3 +18,6 @@
     	        compile 'com.github.SunnyQjm:ArcMenu:v1.0.0'
     	}
     ```
+    
+> # 使用方式
+

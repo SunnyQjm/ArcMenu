@@ -4,9 +4,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.j.ming.arcmenu2.ArcMenu
+import com.j.ming.arcmenu2.ArcMenu.Companion.build
 import com.j.ming.arcmenu2.DensityUtil
 import com.j.ming.arcmenu2.FloatingButton
 import com.j.ming.arcmenu2.extension.MyDelegates
+import java.nio.file.Files.size
 
 class MainActivity : AppCompatActivity() {
     private var fab by MyDelegates.notNullAndOnlyInitFirstTime<ArcMenu>()
@@ -19,15 +21,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFab() {
-        fab = ArcMenu.build(this) {
-            size { getDimenPixelSize(R.dimen.fab_menu_size) }
-            contentRes { R.mipmap.ic_launcher }
-            contentMargin { getDimenPixelSize(R.dimen.fab_menu_content_margin) }
-            position { FloatingButton.Position.POSITION_BOTTOM_RIGHT }
-            layoutMarginHorizon { getDimenPixelSize(R.dimen.fab_layout_horizon_margin) }
-            layoutMarginVertical { getDimenPixelSize(R.dimen.fab_layout_vertical_margin) }
-            duration { 300 }
-        }
+        fab = ArcMenu.Builder(this)
+                .size(getDimenPixelSize(R.dimen.fab_menu_size))
+                .contentRes(R.mipmap.ic_launcher)
+                .contentMargin(getDimenPixelSize(R.dimen.fab_menu_content_margin))
+                .position(FloatingButton.Position.POSITION_BOTTOM_RIGHT)
+                .duration(300)
+                .build()
+
         fab.setOnClickListener {
             fab.open()
         }
