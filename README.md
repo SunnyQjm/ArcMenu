@@ -15,7 +15,7 @@
   * Add the dependency
     ```groovy
     dependencies {
-    	        implementation 'com.github.SunnyQjm:ArcMenu:v1.0.0'
+    	        implementation 'com.github.SunnyQjm:ArcMenu:v1.1.1'
     }
     ```
     
